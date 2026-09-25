@@ -1,54 +1,125 @@
 # LeaveFlow – Mini Leave Request Application
 
-## Project Overview
+A full-stack leave management application built for a technical assessment.
 
-LeaveFlow is a full-stack employee leave management application developed as part of a technical assessment.
+Employees can apply for Casual/Sick leave, track requests and balances. Managers can review, approve, or reject leave requests.
 
-The application allows employees to apply for leave and track their requests. Managers can view pending leave requests and approve or reject them.
+##  Project Links
 
-## Features
+- **Live App:** [https://leave-request-application.vercel.app/](https://leave-request-application.vercel.app/)
+- **Backend:** [https://leave-request-application.onrender.com](https://leave-request-application.onrender.com)
+- **GitHub:** https://github.com/Omkarvi12/leave-request-application
+
+##  Tech Stack
+
+- **Frontend:** React.js, Axios
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** JWT
+- **Deployment:** Vercel + Render + MongoDB Atlas
+
+##  Features
 
 ### Employee
 
-- Employee login
-- JWT authentication
-- View employee profile
-- View Casual Leave balance
-- View Sick Leave balance
-- Apply for Casual Leave
-- Apply for Sick Leave
-- Select leave start and end dates
-- Provide a reason for leave
-- View previous leave requests
-- View leave request status
+- Login with JWT authentication
+- View Casual/Sick leave balance
+- Apply for leave
+- View leave history and status
 - Overlapping leave validation
-- Insufficient leave balance validation
+- Insufficient balance validation
 
 ### Manager
 
 - Manager login
-- View pending leave requests
-- View employee information
-- View leave details
-- Approve leave requests
-- Reject leave requests
-- Refresh pending requests
-- Leave balance deduction after approval
+- View pending requests
+- Approve/Reject leave
+- Automatic balance deduction after approval
 
-## Edge Case Handling
+##  Edge Cases
 
-### 1. Overlapping Leave Requests
+### Overlapping Leave
 
-The application prevents an employee from submitting a leave request when the requested date range overlaps with an existing pending or approved leave request.
+Overlapping pending or approved leave requests are rejected.
 
-Example:
+### Insufficient Balance
+
+A request is rejected if the employee does not have enough leave balance.
+
+### Weekend Handling
+
+Saturday and Sunday are treated as non-working days and are not deducted from leave balance.
+
+Example: Friday → Monday = **2 leave days**.
+
+##  Demo Credentials
+
+**Employee**
 
 text
-Existing Leave:
-10 Oct - 12 Oct
+Email: second1206@test.com
+Password: Second@1206
 
-New Request:
-11 Oct - 14 Oct
 
-Result:
-Rejected
+**Manager**
+
+text
+Email: manager@test.com
+Password: Manager@1206
+
+
+
+##  AI Tools Used
+
+**ChatGPT and Claude Code** were used for:
+
+- Project structure and architecture
+- Code assistance and debugging
+- API/schema suggestions
+- Testing and documentation
+
+##AI-generated code changed
+
+AI initially suggested calculating leave days using simple date difference, which counted weekends. This was changed to exclude Saturday and Sunday according to the application's leave policy.
+
+##  Assumptions
+
+- Leave balance is deducted only after approval.
+- Rejected/pending requests do not deduct balance.
+- Employees can apply for Casual or Sick leave.
+- Overlapping leave requests are not allowed.
+- Start date cannot be after end date.
+
+##  Run Locally
+
+### Backend
+
+bash
+cd backend
+npm install
+npm run dev
+
+
+
+Create .env:
+
+env
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+
+
+
+### Frontend
+
+bash
+cd frontend
+npm install
+npm run dev
+
+
+
+##  Author
+
+**Omkar Vishwakarma**
+B.Tech – Information Technology
